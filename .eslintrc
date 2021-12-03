@@ -1,0 +1,63 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
+  ],
+  "env": {
+    "node": true,
+    "jest": true,
+    "es2021": true
+  },
+  "rules": {
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "error"
+        ]
+      }
+    ],
+    "default-case": "error",
+    "no-alert": "error",
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-imports": "error",
+    "no-empty": "error",
+    "no-unreachable": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "no-debugger": "error",
+    "no-await-in-loop": "error",
+    "no-param-reassign": "error",
+    "no-unused-vars": "error"
+  },
+  "overrides": [
+    {
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "files": [
+        "**/*.ts?(x)"
+      ],
+      "rules": {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error"
+        ],
+        "@typescript-eslint/no-dupe-class-members": [
+          "error"
+        ],
+        "@typescript-eslint/prefer-optional-chain": [
+          "warn"
+        ],
+        "no-duplicate-imports": "warn",
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+      }
+    }
+  ]
+}
