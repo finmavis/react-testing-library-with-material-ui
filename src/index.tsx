@@ -6,6 +6,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+if (process.env.NODE_ENV === 'development') {
+  import('./mocks/browser')
+    .then(({ worker }) => {
+      worker.start();
+    })
+    .catch((error) => {
+      console.error('Failed to import msw mocks browser', error);
+    });
+}
+
 const root = document.getElementById('root');
 const app = (
   <React.StrictMode>
