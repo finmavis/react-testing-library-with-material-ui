@@ -4,6 +4,7 @@ import Home from './components/home';
 import SignUp from './components/sign-up';
 import SignIn from './components/sign-in';
 import Checkout from './components/check-out';
+import AutocompleteProduct from './components/autocomplete-product';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path='/sign-up' element={<SignUp />} />
       <Route path='/sign-in' element={<SignIn />} />
       <Route path='/checkout' element={<Checkout />} />
+      <Route path='/autocomplete-product' element={<AutocompleteProduct />} />
     </Routes>
   );
 }

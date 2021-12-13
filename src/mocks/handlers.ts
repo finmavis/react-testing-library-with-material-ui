@@ -1,4 +1,5 @@
 import { rest } from 'msw';
+import { PRODUCTS } from 'constants/products';
 
 interface LoginBody {
   email: string;
@@ -41,6 +42,19 @@ export const handlers = [
         email,
         gender,
         experience,
+      })
+    );
+  }),
+  rest.get('/api/products', (req, res, ctx) => {
+    const search = req.url.searchParams.get('search') ?? '';
+    const products = PRODUCTS.filter((product) =>
+      product.title.toLowerCase().includes(search.toLowerCase())
+    );
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        items: products,
       })
     );
   }),

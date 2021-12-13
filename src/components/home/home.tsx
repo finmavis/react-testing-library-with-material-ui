@@ -18,6 +18,9 @@ function Home() {
         <Button variant='text' component={Link} to='/sign-in'>
           Go to Sign-in
         </Button>
+        <Button variant='text' component={Link} to='/autocomplete-product'>
+          Go to Autocomplete
+        </Button>
         <Button variant='text' component={Link} to='/checkout'>
           Go to checkout
         </Button>
