@@ -40,9 +40,7 @@ describe('<SignIn />', () => {
         name: /email address/i,
       })
     ).toHaveAccessibleDescription(/Email is required/i);
-    expect(
-      await screen.findByLabelText(/password/i)
-    ).toHaveAccessibleDescription(/Password is required/i);
+    expect(passwordInput).toHaveAccessibleDescription(/Password is required/i);
 
     userEvent.type(emailInput, 'invalid email');
     expect(
@@ -80,11 +78,8 @@ describe('<SignIn />', () => {
     userEvent.click(signInButton);
 
     expect(await screen.findByText(/welcome back!/i)).toBeInTheDocument();
-    expect(
-      await screen.findByRole('textbox', {
-        name: /email address/i,
-      })
-    ).toHaveValue('');
-    expect(await screen.findByLabelText(/password/i)).toHaveValue('');
+    expect(emailInput).toHaveValue('');
+    expect(passwordInput).toHaveValue('');
+    expect(signInButton).toBeEnabled();
   });
 });

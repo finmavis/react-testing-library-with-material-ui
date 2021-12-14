@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from 'utils/render.utils';
+import { render, screen } from 'utils/render.utils';
 import userEvent from '@testing-library/user-event';
 
 import AutocompleteProduct from '../autocomplete-product';
@@ -11,22 +11,16 @@ describe('<AutocompleteProduct />', () => {
       name: /product/i,
     });
     userEvent.type(productInput, 'men');
-    await waitFor(() => undefined);
-    userEvent.click(
-      await screen.findByRole('option', {
-        name: /^mens cotton jacket$/i,
-      })
-    );
-    // Or using findByText
-    // userEvent.click(
-    //   await screen.findByText(/^mens cotton jacket$/i)
-    // );
 
-    expect(
-      await screen.findByRole('textbox', {
-        name: /product/i,
-      })
-    ).toHaveValue('Mens Cotton Jacket');
+    const selectedOption = await screen.findByRole('option', {
+      name: /^mens cotton jacket$/i,
+    });
+    // Or using findByText
+    // const selectedOption = await screen.findByText(/^mens cotton jacket$/i)
+
+    userEvent.click(selectedOption);
+
+    expect(productInput).toHaveValue('Mens Cotton Jacket');
     expect(screen.getByText(/name:/i)).toHaveTextContent(
       'Name: Mens Cotton Jacket'
     );
@@ -41,11 +35,7 @@ describe('<AutocompleteProduct />', () => {
 
     userEvent.click(screen.getByTestId('CloseIcon'));
 
-    expect(
-      await screen.findByRole('textbox', {
-        name: /product/i,
-      })
-    ).toHaveValue('');
+    expect(productInput).toHaveValue('');
     expect(screen.getByText(/name:/i)).toHaveTextContent('Name: -');
     expect(screen.getByText(/description:/i)).toHaveTextContent(
       'Description: -'

@@ -79,33 +79,19 @@ describe('<SignUp />', () => {
     expect(
       await screen.findByRole('textbox', { name: /first name/i })
     ).toHaveAccessibleDescription(/Firstname is required/i);
-    expect(
-      await screen.findByRole('textbox', { name: /last name/i })
-    ).toHaveAccessibleDescription(/Lastname is required/i);
-    expect(
-      await screen.findByRole('textbox', { name: /email/i })
-    ).toHaveAccessibleDescription(/Email is required/i);
-    expect(
-      await screen.findByLabelText(/^password$/i)
-    ).toHaveAccessibleDescription(/Password is required/i);
-    expect(
-      await screen.findByLabelText(/confirm password/i)
-    ).toHaveAccessibleDescription(/Confirm Password is required/i);
-    expect(
-      await screen.findByRole('button', {
-        name: /gender/i,
-      })
-    ).toHaveAccessibleDescription(/Gender is required/i);
-    expect(
-      await screen.findByRole('radiogroup', {
-        name: /watch video timeframe/i,
-      })
-    ).toHaveAccessibleDescription(/Please select an option/i);
-    expect(
-      await screen.findByRole('checkbox', {
-        name: /i agree to the terms and conditions/i,
-      })
-    ).toHaveAccessibleDescription(/You must agree with terms and conditions/i);
+    expect(lastNameInput).toHaveAccessibleDescription(/Lastname is required/i);
+    expect(emailInput).toHaveAccessibleDescription(/Email is required/i);
+    expect(passwordInput).toHaveAccessibleDescription(/Password is required/i);
+    expect(confirmPasswordInput).toHaveAccessibleDescription(
+      /Confirm Password is required/i
+    );
+    expect(genderInput).toHaveAccessibleDescription(/Gender is required/i);
+    expect(watchVideoTimeframeInput).toHaveAccessibleDescription(
+      /Please select an option/i
+    );
+    expect(termsAndConditionInput).toHaveAccessibleDescription(
+      /You must agree with terms and conditions/i
+    );
 
     userEvent.type(firstNameInput, 'John');
     expect(
@@ -232,31 +218,21 @@ describe('<SignUp />', () => {
     userEvent.click(signupButton);
 
     expect(await screen.findByText(/Welcome!/i)).toBeInTheDocument();
-    expect(
-      await screen.findByRole('textbox', { name: /first name/i })
-    ).toHaveValue('');
-    expect(
-      await screen.findByRole('textbox', { name: /last name/i })
-    ).toHaveValue('');
-    expect(await screen.findByRole('textbox', { name: /email/i })).toHaveValue(
-      ''
-    );
-    expect(await screen.findByLabelText(/^password$/i)).toHaveValue('');
-    expect(await screen.findByLabelText(/confirm password/i)).toHaveValue('');
+    expect(firstNameInput).toHaveValue('');
+    expect(lastNameInput).toHaveValue('');
+    expect(emailInput).toHaveValue('');
+    expect(passwordInput).toHaveValue('');
+    expect(confirmPasswordInput).toHaveValue('');
     // expect(
-    //   await screen.findByRole('button', {
+    //   screen.getByRole('button', {
     //     name: /gender/i,
     //   })
     // ).toHaveValue('');
     // expect(
-    //   await screen.findByRole('radiogroup', {
+    //   screen.getByRole('radiogroup', {
     //     name: /watch video timeframe/i,
     //   })
     // ).toHaveValue('');
-    expect(
-      await screen.findByRole('checkbox', {
-        name: /i agree to the terms and conditions/i,
-      })
-    ).not.toBeChecked();
+    expect(termsAndConditionInput).not.toBeChecked();
   });
 });
