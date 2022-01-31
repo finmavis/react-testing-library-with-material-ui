@@ -5,7 +5,6 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Container,
-  CssBaseline,
   Avatar,
   Typography,
   TextField,
@@ -78,7 +77,6 @@ function SignIn() {
 
   return (
     <Container component='main' maxWidth='xs'>
-      <CssBaseline />
       <Box
         sx={{
           marginTop: 8,

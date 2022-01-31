@@ -1,7 +1,6 @@
 import { Fragment, useState, useRef } from 'react';
 import {
   Container,
-  CssBaseline,
   Box,
   Typography,
   Autocomplete,
@@ -41,8 +40,7 @@ function AutocompleteProduct() {
   };
 
   return (
-    <Container component='main' maxWidth='xs'>
-      <CssBaseline />
+    <Container component='main' maxWidth='sm'>
       <Box
         sx={{
           marginTop: 8,

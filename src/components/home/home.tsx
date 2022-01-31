@@ -1,11 +1,10 @@
-import { Container, CssBaseline, Box, Button } from '@mui/material';
+import { Container, Box, Button } from '@mui/material';
 
 import { Link } from 'react-router-dom';
 
 function Home() {
   return (
     <Container component='main' maxWidth='xs'>
-      <CssBaseline />
       <Box
         sx={{
           marginTop: 8,

@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
 
 import Home from './components/home';
 import SignUp from './components/sign-up';
@@ -8,13 +9,16 @@ import AutocompleteProduct from './components/autocomplete-product';
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/sign-up' element={<SignUp />} />
-      <Route path='/sign-in' element={<SignIn />} />
-      <Route path='/checkout' element={<Checkout />} />
-      <Route path='/autocomplete-product' element={<AutocompleteProduct />} />
-    </Routes>
+    <>
+      <CssBaseline />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/sign-in' element={<SignIn />} />
+        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/autocomplete-product' element={<AutocompleteProduct />} />
+      </Routes>
+    </>
   );
 }
 

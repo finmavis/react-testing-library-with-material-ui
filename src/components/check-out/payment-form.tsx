@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import {
   Typography,
   Grid,
@@ -9,7 +9,7 @@ import {
 
 function PaymentForm() {
   return (
-    <React.Fragment>
+    <Fragment>
       <Typography variant='h6' gutterBottom>
         Payment method
       </Typography>
@@ -65,7 +65,7 @@ function PaymentForm() {
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Fragment>
   );
 }
 

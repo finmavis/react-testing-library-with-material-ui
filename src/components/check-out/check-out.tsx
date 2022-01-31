@@ -1,6 +1,5 @@
-import React from 'react';
+import { useState, Fragment } from 'react';
 import {
-  CssBaseline,
   Paper,
   Stepper,
   Step,
@@ -11,19 +10,27 @@ import {
   Container,
 } from '@mui/material';
 
+import SelectProduct from './select-product';
 import AddressForm from './address-form';
 import PaymentForm from './payment-form';
 import Review from './review';
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = [
+  'Select product',
+  'Shipping address',
+  'Payment details',
+  'Review your order',
+];
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <SelectProduct />;
     case 1:
-      return <PaymentForm />;
+      return <AddressForm />;
     case 2:
+      return <PaymentForm />;
+    case 3:
       return <Review />;
     default:
       throw new Error('Unknown step');
@@ -31,7 +38,7 @@ function getStepContent(step: number) {
 }
 
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -42,8 +49,7 @@ export default function Checkout() {
   };
 
   return (
-    <Container maxWidth='sm'>
-      <CssBaseline />
+    <Container maxWidth='md'>
       <Box component='main' sx={{ p: 2 }}>
         <Paper sx={{ p: 2 }}>
           <Typography component='h1' variant='h4' align='center'>
@@ -58,7 +64,7 @@ export default function Checkout() {
           </Stepper>
           <Box sx={{ px: 1, py: 2 }}>
             {activeStep === steps.length ? (
-              <React.Fragment>
+              <Fragment>
                 <Typography variant='h5' gutterBottom>
                   Thank you for your order.
                 </Typography>
@@ -67,9 +73,9 @@ export default function Checkout() {
                   confirmation, and will send you an update when your order has
                   shipped.
                 </Typography>
-              </React.Fragment>
+              </Fragment>
             ) : (
-              <React.Fragment>
+              <Fragment>
                 {getStepContent(activeStep)}
                 <div>
                   {activeStep !== 0 && (
@@ -83,7 +89,7 @@ export default function Checkout() {
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                   </Button>
                 </div>
-              </React.Fragment>
+              </Fragment>
             )}
           </Box>
         </Paper>

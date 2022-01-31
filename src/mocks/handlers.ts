@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { PRODUCTS } from 'constants/products';
+import { PRODUCTS } from 'constants/products.constant';
 
 interface LoginBody {
   email: string;

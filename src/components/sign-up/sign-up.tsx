@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Container,
-  CssBaseline,
   Box,
   Avatar,
   Typography,
@@ -28,8 +27,8 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { GENDER } from 'constants/gender';
-import { WATCH_VIDEO_TIMEFRAMES } from 'constants/watch-video-timeframes';
+import { GENDER } from 'constants/gender.constatnt';
+import { WATCH_VIDEO_TIMEFRAMES } from 'constants/watch-video-timeframes.constatnt';
 
 interface SignUpForm {
   firstName: string;
@@ -120,7 +119,6 @@ export default function SignUp() {
 
   return (
     <Container component='main' maxWidth='xs'>
-      <CssBaseline />
       <Box
         sx={{
           marginTop: 8,
